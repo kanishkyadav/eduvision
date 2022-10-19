@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+{#<link href="{% static 'program/css/style.css' %}" rel="stylesheet">#}
+{% endblock style %}
+
+{% block sidebar %}
+<div class="col-md-2 col-lg-2 col-sm-2">
+  <div class="sidebar border-right border-info h-100">
+    <div style="text-align: center;">
+      <h4>{{slug|upper}}</h4>
+    </div>
+    <hr>
+  {% if post %}
+<nav class="nav flex-column">
+{% for po in post %}
+    <a href="?page={{forloop.counter}}" class="link-dark">
+    <i class="">
+    </i><span>{{po.title}}</span></a>
+    {% endfor %}
+</nav>
+    {% else %}
+    not found
+{% endif %}
+  </div>
+  <!--sidebar end-->
+</div>
+{% endblock sidebar %}
+  <!--content start-->
+
+
+{% block content %}
+<div class="content col-md-10 col-sm-10 col-lg-10">
+<br>
+     {% if is_paginated %}
+  <ul class="pagination justify-content-end mt-5">
+    {% if page_obj.has_previous %}
+      <li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+    {% else %}
+      <li class="page-item disabled">
+       <span class="page-link">Previous</span>
+      </li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="page-item active">
+         <span class="page-link">
+        {{ i }}
+        <span class="sr-only"></span>
+         </span>
+        </li>
+      {% else %}
+        <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    {% else %}
+      <li class="page-item disabled">
+      <span class="page-link">Next</span>
+      </li>
+    {% endif %}
+  </ul>
+{% endif %}
+   
+  <div class="row">
+    <div class="col-md-8 col-lg-10">
+<div class=" bg-white rounded">
+  <div class="card-body">
+      {% if object_list %}
+      <div class = "cardcontent">
+                          
+      {% for po in object_list %}
+          <h3 class= "title">{{ po.title|capfirst }}</h3>
+          <p class= "content">{{ po.content|safe }}</p> 
+      {% endfor %}
+
+        </div>
+      {% else %}
+  <div class="alert alert-primary text-center" role="alert">
+  <p>No Record found in database</p>
+      {% endif %}
+
+  </div>
+</div>
+</div>
+</div>
+{% if is_paginated %}
+  <ul class="pagination justify-content-end">
+    {% if page_obj.has_previous %}
+      <li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+    {% else %}
+      <li class="page-item disabled">
+       <span class="page-link">Previous</span>
+      </li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="page-item active">
+         <span class="page-link">
+        {{ i }}
+        <span class="sr-only"></span>
+         </span>
+        </li>
+      {% else %}
+        <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    {% else %}
+      <li class="page-item disabled">
+      <span class="page-link">Next</span>
+      </li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+</div>
+
+
+{% endblock content %}

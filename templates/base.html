@@ -1,0 +1,150 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+    <style>
+        body{
+            background-color: #a9b793;
+        }
+
+        .navbar-scroll .nav-link,
+        .navbar-scroll .navbar-toggler-icon,
+        .navbar-scroll .navbar-brand {
+          color: #fff;
+        }
+
+        /* Color of the links AFTER scroll */
+        .navbar-scrolled .nav-link,
+        .navbar-scrolled .navbar-toggler-icon,
+        .navbar-scrolled .navbar-brand {
+          color: #fff;
+        }
+
+        /* Color of the navbar AFTER scroll */
+        .navbar-scroll,
+        .navbar-scrolled {
+          background-color: #cbbcb1;
+        }
+
+        .mask-custom {
+          backdrop-filter: blur(5px);
+          background-color: rgba(255, 255, 255, .15);
+        }
+
+        .navbar-brand {
+          font-size: 1.75rem;
+          letter-spacing: 3px;
+        }
+        @import url(//fonts.googleapis.com/css?family=Montserrat:300,400,500);
+.contact4 {
+  font-family: "Montserrat", sans-serif;
+	color: #8d97ad;
+  font-weight: 300;
+}
+
+.contact4 h1, .contact4 h2, .contact4 h3, .contact4 h4, .contact4 h5, .contact4 h6 {
+  color: #3e4555;
+}
+
+.contact4 .font-weight-medium {
+	font-weight: 500;
+}
+
+.contact4 .form-control {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.contact4 .form-control:focus {
+  border-color: #ffffff;
+}
+
+.contact4 input::-webkit-input-placeholder,
+.contact4 textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact4 input:-ms-input-placeholder,
+.contact4 textarea:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact4 input::placeholder,
+.contact4 textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact4 .right-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.contact4.bg-info {
+    background-color: #188ef4 !important;
+}
+
+.contact4 .text-inverse {
+    color: #3e4555 !important;
+}
+
+@media (min-width: 1024px) {
+	.contact4 .contact-box {
+    padding: 80px 105px 80px 0px;
+	}
+}
+
+@media (max-width: 767px) {
+	.contact4 .contact-box {
+    padding-left: 15px;
+    padding-right: 15px;
+	}
+}
+
+@media (max-width: 1023px) {
+	.contact4 .right-image {
+			position: relative;
+			bottom: -95px;
+	}
+}
+
+    </style>
+</head>
+<body>
+<header>
+    {% include "navbar.html" %}
+    <div class="container-fluid">
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        {% block msg %}
+        {% endblock msg %}
+      </div>
+    </div>
+
+      <div class="row">
+      {% block sidebar %}
+      {% endblock sidebar %}
+
+        {% block content %}
+        {% endblock content %}
+      </div>
+ </div>
+
+</header>
+{% include "footer.html" %}
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"
+></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<script src="{% static 'js/mdb.min.js' %}"></script>
+</body>
+</html>
